@@ -2,6 +2,7 @@ import About from '@/components/About';
 import DoctorList from '@/components/Doctors/DoctorList';
 import FaqList from '@/components/Faq/FaqList';
 import ServiceList from '@/components/Services/ServiceList';
+import Testimonial from '@/components/Testimonial/Testimonial';
 import Image from 'next/image';
 import React from 'react';
 import { BsArrowRight } from "react-icons/bs";
@@ -261,6 +262,25 @@ const HomePage: React.FC = () => (
 </div>
 
         </div>
+    </div>
+</section>
+
+
+{/* testimonial */}
+
+<section>
+    <div className="container">
+        <div className='xl:w-[470px] mx-auto'>
+            <h2 className='heading text-center'>
+                What our patient say
+            </h2>
+            <p className='text__para text-center'> 
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Et voluptas nemo labore autem quam omnis sequi minima, obcaecati ratione doloribus voluptate officiis, eveniet totam quos quidem, ullam nisi hic similique!
+            </p>
+        </div>
+
+<Testimonial/>
+
     </div>
 </section>
 
