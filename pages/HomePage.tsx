@@ -1,9 +1,12 @@
 import About from '@/components/About';
+import DoctorList from '@/components/Doctors/DoctorList';
+import FaqList from '@/components/Faq/FaqList';
 import ServiceList from '@/components/Services/ServiceList';
 import Image from 'next/image';
 import React from 'react';
 import { BsArrowRight } from "react-icons/bs";
 import avatarIcon from '../public/assets/images/avatar-icon.png';
+import faqImg from '../public/assets/images/faq-img.png';
 import featureimg from '../public/assets/images/feature-img.png';
 import heroImg01 from '../public/assets/images/hero-img01.png';
 import heroImg02 from '../public/assets/images/hero-img02.png';
@@ -236,11 +239,32 @@ const HomePage: React.FC = () => (
     <p className='text__para text-center'>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Odit ipsa laudantium, iure deleniti sit nam autem earum sint cupiditate hic praesentium saepe dolore ex ipsum non aperiam odio consequatur deserunt!</p>
     </div>
 
-    {/* <DoctorList/> */}
+    <DoctorList/>
 
         </div>
     </section>
+
+
+    {/* faq section  */}
     
+
+<section>
+    <div className="container">
+        <div className='flex justify-between gap-[50px] lg:gap-0'>
+            <div className='w-1/2 hidden md:block'>
+                <Image src={faqImg} alt=''/>
+            </div>
+
+<div className='w-full md:w-1/2'>
+    <h2 className='heading'>FAQs by our beloved patients</h2>
+    <FaqList/>
+</div>
+
+        </div>
+    </div>
+</section>
+
+
     </>
     );
     
