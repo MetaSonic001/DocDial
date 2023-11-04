@@ -15,7 +15,7 @@ const MedicalFooter: React.FC = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
           <div className="col-span-2 md:col-span-1">
             <div className="flex items-center mb-4">
-              <Image src="/medical-logo.png" alt="Medical Logo" width={100} height={100} />
+              <Image src="/favicon.ico" alt="Medical Logo" width={100} height={100} />
               <h1 className="text-3xl ml-2 font-bold">DocDial</h1>
             </div>
             <p className="text-gray-400">Providing quality healthcare services to our community.</p>
@@ -23,18 +23,18 @@ const MedicalFooter: React.FC = () => {
           <div>
             <h2 className="text-xl font-semibold mb-3">Quick Links</h2>
             <ul className="space-y-2">
-              <li><a href="/about">About Us</a></li>
-              <li><a href="/services">Our Services</a></li>
-              <li><a href="/doctors">Our Doctors</a></li>
-              <li><a href="/contact">Contact Us</a></li>
+              <li><a href="/About">About Us</a></li>
+              <li><a href="/Services">Our Services</a></li>
+              <li><a href="/Doctors">Our Doctors</a></li>
+              <li><a href="/Contact">Contact Us</a></li>
             </ul>
           </div>
           <div>
             <h2 className="text-xl font-semibold mb-3">Contact Info</h2>
             <address>
               <p><FaMapMarkerAlt className="inline" /> 123 Medical Drive</p>
-              <p>City, State ZIP</p>
-              <p><FaEnvelope className="inline" /> info@medicalcenter.com</p>
+              <p>Mumbai</p>
+              <p><FaEnvelope className="inline" /> docdialinfo@gmail.com</p>
             </address>
           </div>
           <div>

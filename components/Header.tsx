@@ -1,3 +1,4 @@
+
 import Image from "next/image";
 import { useState } from "react";
 
@@ -13,10 +14,10 @@ const Header = () => {
       <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
         <a href="#" className="flex items-center">
           <Image
-            src="https://flowbite.com/docs/images/logo.svg"
+            src="/favicon.ico"
             alt="DocDial Logo"
-            width={32}
-            height={32}
+            width={40}
+            height={40}
             className="h-8 mr-3"
           />
           <span className="self-center text-2xl text-black font-semibold whitespace-nowrap dark:text-black">
@@ -42,7 +43,7 @@ const Header = () => {
           <ul className="flex flex-col font-medium p-4 md:p-0 mt-4 border border-gray-100 rounded-lg bg-gray-50 md:flex-row md:space-x-8 md:mt-0 md:border-0 md:bg-white dark-bg-gray-800 md-dark-bg-gray-900 dark-border-gray-700">
             <li>
               <a
-                href="/Home"
+                href="/#"
                 className="block py-2 pl-3 pr-4 text-black rounded hover-bg-blue-700 md-bg-transparent md-text-blue-700 md-p-0 md-dark-text-blue-500 dark-bg-blue-600 md-dark-bg-transparent"
                 aria-current="page"
               >
@@ -51,18 +52,18 @@ const Header = () => {
             </li>
             <li>
               <a
-                href="/Services"
+                href="/Doctors"
                 className="block py-2 pl-3 pr-4 text-gray-900 rounded hover-bg-blue-700 md-bg-transparent md-text-blue-700 md-p-0 md-dark-text-blue-500 dark-bg-blue-600 md-dark-bg-transparent"
               >
-                Services
+                Find a Doctor
               </a>
             </li>
             <li>
               <a
-                href="#"
+                href="/Services"
                 className="block py-2 pl-3 pr-4 text-gray-900 rounded hover-bg-blue-700 md-bg-transparent md-text-blue-700 md-p-0 md-dark-text-blue-500 dark-bg-blue-600 md-dark-bg-transparent"
               >
-                Pricing
+                Services
               </a>
             </li>
             <li>

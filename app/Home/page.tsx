@@ -6,16 +6,16 @@ import Testimonial from '@/components/Testimonial/Testimonial';
 import Image from 'next/image';
 import React from 'react';
 import { BsArrowRight } from "react-icons/bs";
-import avatarIcon from '../public/assets/images/avatar-icon.png';
-import faqImg from '../public/assets/images/faq-img.png';
-import featureimg from '../public/assets/images/feature-img.png';
-import heroImg01 from '../public/assets/images/hero-img01.png';
-import heroImg02 from '../public/assets/images/hero-img02.png';
-import heroImg03 from '../public/assets/images/hero-img03.png';
-import icon01 from '../public/assets/images/icon01.png';
-import icon02 from '../public/assets/images/icon02.png';
-import icon03 from '../public/assets/images/icon03.png';
-import videoIcon from '../public/assets/images/video-icon.png';
+import avatarIcon from '../../public/assets/images/avatar-icon.png';
+import faqImg from '../../public/assets/images/faq-img.png';
+import featureimg from '../../public/assets/images/feature-img.png';
+import heroImg01 from '../../public/assets/images/hero-img01.png';
+import heroImg02 from '../../public/assets/images/hero-img02.png';
+import heroImg03 from '../../public/assets/images/hero-img03.png';
+import icon01 from '../../public/assets/images/icon01.png';
+import icon02 from '../../public/assets/images/icon02.png';
+import icon03 from '../../public/assets/images/icon03.png';
+import videoIcon from '../../public/assets/images/video-icon.png';
 
 const HomePage: React.FC = () => (
     <>

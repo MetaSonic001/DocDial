@@ -1,4 +1,5 @@
 // FaqItem.tsx
+"use client"
 import { useState } from "react";
 import { AiOutlineMinus, AiOutlinePlus } from "react-icons/ai";
 
