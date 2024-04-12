@@ -1,4 +1,3 @@
-
 import Image from "next/image";
 import { useState } from "react";
 
@@ -25,19 +24,28 @@ const Header = () => {
           </span>
         </a>
         <button
-          data-collapse-toggle="navbar-multi-level"
-          type="button"
-          className="md:hidden block p-2 w-10 h-10 flex items-center justify-center text-white rounded-lg hover-bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark-hover-bg-gray-700 dark-focus-ring-gray-600"
-          aria-controls="navbar-multi-level"
-          aria-expanded="false"
+          onClick={handleSearchToggle}
+          className="md:hidden block p-2 w-10 h-10 flex items-center justify-center rounded-lg hover-bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark-hover-bg-gray-700 dark-focus-ring-gray-600"
         >
           <span className="sr-only">Open main menu</span>
-          {/* Replace with Font Awesome icon */}
-          Click me
+          <svg
+            className="w-6 h-6"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth="2"
+              d="M4 6h16M4 12h16m-7 6h7"
+            />
+          </svg>
         </button>
 
         <div
-          className="hidden w-full md:block md:w-auto"
+          className="hidden w-full md:flex md:w-auto"
           id="navbar-multi-level"
         >
           <ul className="flex flex-col font-medium p-4 md:p-0 mt-4 border border-gray-100 rounded-lg bg-gray-50 md:flex-row md:space-x-8 md:mt-0 md:border-0 md:bg-white dark-bg-gray-800 md-dark-bg-gray-900 dark-border-gray-700">
@@ -77,16 +85,6 @@ const Header = () => {
           </ul>
         </div>
         <div className="relative md:mr-0 hidden md:block">
-          <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-            <svg
-              className="w-5 h-5 text-gray-500"
-              fill="currentColor"
-              viewBox="0 0 20 20"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              {/* Your SVG path here */}
-            </svg>
-          </div>
           <input
             type="text"
             id="search"
@@ -96,23 +94,6 @@ const Header = () => {
             placeholder="Search..."
           />
         </div>
-        <button
-          type="button"
-          className={`md:hidden text-gray-400 hover-text-gray-900 focus:outline-none focus:ring-2 focus:ring-blue-300 rounded-lg inline-flex items-center justify-center ${
-            isSearchOpen ? "hidden" : "block"
-          }`}
-          onClick={handleSearchToggle}
-        >
-          <span className="sr-only">Open search</span>
-          <svg
-            className="w-6 h-6"
-            fill="currentColor"
-            viewBox="0 0 20 20"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            {/* Your SVG path here */}
-          </svg>
-        </button>
         <div
           className={`${
             isSearchOpen ? "block" : "hidden"
@@ -125,10 +106,14 @@ const Header = () => {
             Search
           </button>
           <button className="text-blue-700 border border-blue-700 px-3 py-2 rounded-lg hover-bg-blue-700 hover-text-white">
+            <a href="/login">
             Log In
+            </a>
           </button>
           <button className="text-white bg-blue-700 px-3 py-2 rounded-lg hover-bg-blue-800">
+            <a href="/signup">
             Sign Up
+            </a>
           </button>
         </div>
       </div>
