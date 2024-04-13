@@ -48,10 +48,10 @@ const ContactUsPage = () => {
             <p>Fr. Conceicao Rodrigues College of Engineering, Bandra, Mumbai</p>
           </div>
         </div>
-        <div className="mb-8">
+        {/* <div className="mb-8">
           <h2 className="text-xl font-semibold mb-4">Location</h2>
           <img src="https://maps.googleapis.com/maps/api/staticmap?center=19.0567,72.8306&zoom=14&size=600x300&maptype=roadmap&markers=color:red%7Clabel:B%7C19.0567,72.8306&key=YOUR_API_KEY" alt="Bandra, Mumbai" className="rounded-md" />
-        </div>
+        </div> */}
         <div>
           <h2 className="text-xl font-semibold mb-4">Contact Form</h2>
           <form onSubmit={handleSubmit} className="space-y-4">
@@ -65,7 +65,7 @@ const ContactUsPage = () => {
             </div>
             <div>
               <label htmlFor="message" className="block font-semibold">Message</label>
-              <textarea id="message" name="message" value={formData.message} onChange={handleChange} rows="4" className="w-full border-gray-300 rounded-md px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"></textarea>
+              <textarea id="message" name="message" value={formData.message} onChange={handleChange} className="w-full border-gray-300 rounded-md px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"></textarea>
             </div>
             <button type="submit" className="w-full bg-blue-500 text-white py-2 px-4 rounded-md hover:bg-blue-600">Submit</button>
           </form>
