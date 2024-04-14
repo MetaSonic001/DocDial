@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import CSVReader from "react-csv-reader";
-import { db } from "../../firebase";
+import { db } from "../firebase";
 
 export default function CSVUpload() {
   const [uploadConfirmation, setUploadConfirmation] = useState<string | null>(
@@ -20,22 +20,22 @@ export default function CSVUpload() {
       csvData.forEach((entry) => {
         const [
           Blood_Type,
+          Contact_number,
           Email,
           Gender,
-          Name,
           Hospital_name,
-          Contact_number,
+          Name,
           Role,
         ] = entry;
 
-        const docRef = db.collection("messages").doc();
+        const docRef = db.collection("users").doc(); // Change collection name to "users"
         batch.set(docRef, {
           Blood_Type,
+          Contact_number,
           Email,
           Gender,
-          Name,
           Hospital_name,
-          Contact_number,
+          Name,
           Role,
         });
       });
