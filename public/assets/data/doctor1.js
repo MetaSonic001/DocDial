@@ -1,0 +1,111 @@
+import Shaun from "../images/dr_anand_rao.png";
+import Jefin from "../images/dr_ankeet_dedhia.png";
+import Cyrus from "../images/dr_brian_pinto.png";
+import Brian from "../images/dr_jadwani.png";
+import Robin from "../images/dr_nitin_gokhale.png";
+import Jaipal from "../images/dr_robin_pinto.png";
+
+export const doctors = [
+  {
+    id: "01",
+    name: "Dr. Shaun Mendes",
+    specialization: "Surgeon",
+    avgRating: 4.8,
+    totalRating: 272,
+    photo: Shaun,
+    totalPatients: 1500,
+    hospital: "Mount Adora Hospital, Sylhet.",
+    appointmentTimings: [
+      "09:00 AM",
+      "10:30 AM",
+      "12:00 PM",
+      "02:30 PM",
+      "04:00 PM",
+    ],
+  },
+  {
+    id: "02",
+    name: "Dr. Jefin John",
+    specialization: "Neurologist",
+    avgRating: 4.8,
+    totalRating: 272,
+    photo: Jefin,
+    totalPatients: 1500,
+    hospital: "Mount Adora Hospital, Sylhet.",
+    appointmentTimings: [
+      "09:00 AM",
+      "10:30 AM",
+      "12:00 PM",
+      "02:30 PM",
+      "04:00 PM",
+    ],
+  },
+  {
+    id: "03",
+    name: "Dr. Cyrus Gomes",
+    specialization: "Dermatologist",
+    avgRating: 4.8,
+    totalRating: 272,
+    photo: Cyrus,
+    totalPatients: 1500,
+    hospital: "Mount Adora Hospital, Sylhet.",
+    appointmentTimings: [
+      "09:00 AM",
+      "10:30 AM",
+      "12:00 PM",
+      "02:30 PM",
+      "04:00 PM",
+    ],
+  },
+  {
+    id: "04",
+    name: "Dr. Brian Pinto",
+    specialization: "Cardiology",
+    avgRating: 4.6,
+    totalRating: 272,
+    photo: Brian,
+    totalPatients: 1200,
+    hospital: "Holy Family, Bandra",
+    appointmentTimings: [
+      "09:00 AM",
+      "10:30 AM",
+      "12:00 PM",
+      "02:30 PM",
+      "04:00 PM",
+    ],
+  },
+  {
+    id: "05",
+    name: "Dr. Robin Pinto",
+    specialization: "Ophthalmology",
+    avgRating: 4.3,
+    totalRating: 292,
+    photo: Robin,
+    totalPatients: 1400,
+    hospital: "Holy Family, Bandra",
+    appointmentTimings: [
+      "09:00 AM",
+      "10:30 AM",
+      "12:00 PM",
+      "02:30 PM",
+      "04:00 PM",
+    ],
+  },
+  {
+    id: "06",
+    name: "Dr. Jaipal P Jadwani ",
+    specialization: "Urology",
+    avgRating: 4.2,
+    totalRating: 172,
+    photo: Jaipal,
+    totalPatients: 1100,
+    hospital: "Holy Family, Bandra",
+    appointmentTimings: [
+      "09:00 AM",
+      "10:30 AM",
+      "12:00 PM",
+      "02:30 PM",
+      "04:00 PM",
+    ],
+  },
+];
