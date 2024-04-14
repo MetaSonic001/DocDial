@@ -22,6 +22,6 @@
       "@/*": ["./*"]
     }
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "app/UploadDoc/page.jsx", "app/UploadDoc/page.jsx"],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "app/UploadDoc/page.jsx", "app/UploadDoc/page.jsx", "components/slotbooking/TimeSlotSelection.jsx", "public/assets/data/doctor.js"],
   "exclude": ["node_modules"]
 }

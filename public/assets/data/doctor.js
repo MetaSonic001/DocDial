@@ -1,3 +1,4 @@
+import { StaticImageData } from "next/image";
 import doctorImg01 from "../images/doctor-img01.png";
 import doctorImg02 from "../images/doctor-img02.png";
 import doctorImg03 from "../images/doctor-img03.png";
@@ -12,6 +13,11 @@ export const doctors = [
     photo: doctorImg01,
     totalPatients: 1500,
     hospital: "Mount Adora Hospital, Sylhet.",
+    appointmentTimings: {
+      '2023-04-15': ['09:00 AM', '10:30 AM', '12:00 PM', '02:30 PM', '04:00 PM'],
+      '2023-04-16': ['10:00 AM', '11:30 AM', '01:00 PM', '03:30 PM', '05:00 PM'],
+      // Add more dates and corresponding time slots as needed
+    },
   },
   {
     id: "02",
@@ -22,6 +28,11 @@ export const doctors = [
     photo: doctorImg02,
     totalPatients: 1500,
     hospital: "Mount Adora Hospital, Sylhet.",
+    appointmentTimings: {
+      '2023-04-15': ['09:00 AM', '10:30 AM', '12:00 PM', '02:30 PM', '04:00 PM'],
+      '2023-04-16': ['10:00 AM', '11:30 AM', '01:00 PM', '03:30 PM', '05:00 PM'],
+      // Add more dates and corresponding time slots as needed
+    },
   },
   {
     id: "03",
@@ -32,5 +43,12 @@ export const doctors = [
     photo: doctorImg03,
     totalPatients: 1500,
     hospital: "Mount Adora Hospital, Sylhet.",
+    appointmentTimings: {
+      '2023-04-15': ['09:00 AM', '10:30 AM', '12:00 PM', '02:30 PM', '04:00 PM'],
+      '2023-04-16': ['10:00 AM', '11:30 AM', '01:00 PM', '03:30 PM', '05:00 PM'],
+      // Add more dates and corresponding time slots as needed
+    },
   },
 ];
+
+

@@ -1,6 +1,6 @@
 "use client";
 import React, { useState } from "react";
-import { auth, db, googleProvider } from "../firebase";
+import { auth, db, googleProvider } from "../../firebase";
 import { createUserWithEmailAndPassword, signInWithPopup } from "firebase/auth";
 import { addDoc, collection } from "firebase/firestore";
 import { useRouter } from "next/navigation";
@@ -46,7 +46,14 @@ const SignUp = () => {
   };
 
   return (
-    <div className="flex justify-center items-center h-screen">
+    <div
+    className="flex justify-center items-center h-screen"
+    style={{
+      backgroundImage: `url("/assets/images/medical background.png")`, // Updated background image path
+      backgroundSize: "cover",
+      backgroundPosition: "center",
+    }}
+  >
       <div className="bg-white p-8 rounded-lg shadow-md w-full max-w-md">
         <h2 className="text-2xl font-bold mb-4">Sign Up</h2>
         <form onSubmit={handleEmailSignUp}>
