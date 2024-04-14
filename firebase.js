@@ -1,6 +1,6 @@
-import firebase from 'firebase/compat/app';
-import 'firebase/compat/auth';
-import 'firebase/compat/firestore';
+import firebase from "firebase/compat/app";
+import "firebase/compat/auth";
+import "firebase/compat/firestore";
 
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
@@ -13,7 +13,7 @@ const firebaseConfig = {
   storageBucket: "docdial-f2cde.appspot.com",
   messagingSenderId: "441470693716",
   appId: "1:441470693716:web:83bc788db2fd84f18258c1",
-  measurementId: "G-68WLDE0Z8R"
+  measurementId: "G-68WLDE0Z8R",
 };
 
 // Initialize Firebase
@@ -26,5 +26,4 @@ if (!firebase.apps.length) {
 export const auth = firebase.auth();
 export const db = firebase.firestore();
 export const googleProvider = new firebase.auth.GoogleAuthProvider();
-
 export default firebase;

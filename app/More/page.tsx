@@ -1,19 +1,17 @@
-
-
 // additional details
 
 "use client";
-import React, { useState } from 'react';
-import { auth, db } from '../../firebase';
-import { addDoc, collection } from 'firebase/firestore';
-import { useRouter } from 'next/navigation';
+import React, { useState } from "react";
+import { auth, db } from "../firebase";
+import { addDoc, collection } from "firebase/firestore";
+import { useRouter } from "next/navigation";
 
 const AdditionalDetails = () => {
-  const [phone, setPhone] = useState('');
-  const [gender, setGender] = useState('');
-  const [bloodType, setBloodType] = useState('');
-  const [dob, setDob] = useState('');
-  const [address, setAddress] = useState('');
+  const [phone, setPhone] = useState("");
+  const [gender, setGender] = useState("");
+  const [bloodType, setBloodType] = useState("");
+  const [dob, setDob] = useState("");
+  const [address, setAddress] = useState("");
   const router = useRouter();
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
@@ -21,7 +19,7 @@ const AdditionalDetails = () => {
     try {
       const user = auth.currentUser;
       if (user) {
-        await addDoc(collection(db, 'users'), {
+        await addDoc(collection(db, "users"), {
           email: user.email,
           phone,
           gender,
@@ -29,11 +27,11 @@ const AdditionalDetails = () => {
           dob,
           address,
         });
-        console.log('Additional details saved to Firestore');
-        router.push('/'); // Redirect to the home page or any other desired page
+        console.log("Additional details saved to Firestore");
+        router.push("/"); // Redirect to the home page or any other desired page
       }
     } catch (error) {
-      console.error('Error saving additional details:', error);
+      console.error("Error saving additional details:", error);
     }
   };
 

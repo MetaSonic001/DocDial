@@ -1,27 +1,31 @@
 "use client";
-import React, { useState } from 'react';
-import { auth, db, googleProvider } from '../../firebase';
-import { createUserWithEmailAndPassword, signInWithPopup } from 'firebase/auth';
-import { addDoc, collection } from 'firebase/firestore';
-import { useRouter } from 'next/navigation';
+import React, { useState } from "react";
+import { auth, db, googleProvider } from "../firebase";
+import { createUserWithEmailAndPassword, signInWithPopup } from "firebase/auth";
+import { addDoc, collection } from "firebase/firestore";
+import { useRouter } from "next/navigation";
 
 const SignUp = () => {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
   const router = useRouter();
 
   const handleEmailSignUp = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     try {
-      const userCredential = await createUserWithEmailAndPassword(auth, email, password);
+      const userCredential = await createUserWithEmailAndPassword(
+        auth,
+        email,
+        password
+      );
       const user = userCredential.user;
-      await addDoc(collection(db, 'users'), {
+      await addDoc(collection(db, "users"), {
         email: user.email,
       });
-      console.log('User registered and email saved to Firestore');
-      router.push('/More');
+      console.log("User registered and email saved to Firestore");
+      router.push("/More");
     } catch (error) {
-      console.error('Error signing up:', error);
+      console.error("Error signing up:", error);
       // Handle the error, e.g., display an error message to the user
     }
   };
@@ -30,14 +34,14 @@ const SignUp = () => {
     try {
       const result = await signInWithPopup(auth, googleProvider);
       const user = result.user;
-      await addDoc(collection(db, 'users'), {
+      await addDoc(collection(db, "users"), {
         email: user.email,
         displayName: user.displayName,
       });
-      console.log('User registered with Google and email saved to Firestore');
-      router.push('/More');
+      console.log("User registered with Google and email saved to Firestore");
+      router.push("/More");
     } catch (error) {
-      console.error('Error signing up with Google:', error);
+      console.error("Error signing up with Google:", error);
     }
   };
 
