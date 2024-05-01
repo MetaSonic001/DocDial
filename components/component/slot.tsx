@@ -13,9 +13,9 @@ export default function slot() {
       <div className="max-w-6xl mx-auto px-4 md:px-6 py-12 md:py-16">
         <div className="grid md:grid-cols-2 gap-8 md:gap-12">
           <div>
-            <h1 className="text-3xl md:text-4xl font-bold tracking-tight">Book an Appointment with <br/> Dr. Sarah Smith</h1>
+            <h1 className="text-3xl md:text-4xl font-bold tracking-tight">Book an Appointment with <br/> Dr. Jefin John</h1>
             <p className="mt-4 text-gray-500 dark:text-gray-400">
-              Dr. Sarah Smith is a highly experienced family medicine physician with a focus on preventive care and
+              Dr. Jefin John is a highly experienced family medicine physician with a focus on preventive care and
               patient education.
             </p>
             <div className="mt-6 grid grid-cols-1 sm:grid-cols-2 gap-4">
