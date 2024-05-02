@@ -11,7 +11,7 @@ const Header = () => {
   return (
     <nav className="bg-white border-gray-200 dark:bg-gray-900 dark:border-gray-700">
       <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
-        <a href="#" className="flex items-center">
+        <a href="/Home" className="flex items-center">
           <Image
             src="/favicon.ico"
             alt="DocDial Logo"
@@ -90,7 +90,14 @@ const Header = () => {
                 Chatbot
               </a>
             </li>
-            
+            <li>
+              <a
+                href="/Blog"
+                className="block py-2 pl-3 pr-4 text-gray-900 rounded hover-bg-blue-700 md-bg-transparent md-text-blue-700 md-p-0 md-dark-text-blue-500 dark-bg-blue-600 md-dark-bg-transparent"
+              >
+                Blog
+              </a>
+            </li>
           </ul>
         </div>
         <div className="relative md:mr-0 hidden md:block">
