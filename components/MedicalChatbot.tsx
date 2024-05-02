@@ -38,7 +38,7 @@ const MedicalChatbot: React.FC = () => {
         handleAiResponse("I'm sorry, there was an error processing your request. Please try again later.");
       } finally {
         setIsLoading(false);
-      }
+      } 
     }
 
     <form ref={formRef} onSubmit={handleSendMessage} className="mt-4">
@@ -62,8 +62,9 @@ const MedicalChatbot: React.FC = () => {
   };
 
   const handleAiResponse = (response: string) => {
-    if (response.trim() !== '') {
-      setMessages([...messages, { user: false, text: response }]);
+    const formattedResponse = response.replace(/\*/g, ''); // Remove all '*' characters
+    if (formattedResponse.trim() !== '') {
+      setMessages([...messages, { user: false, text: formattedResponse.trim() }]);
     } else {
       setMessages([
         ...messages,
