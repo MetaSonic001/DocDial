@@ -20,7 +20,7 @@ const DoctorPage: React.FC = () => {
           patientsAttended={currentDoctor.totalPatients}
           hospital={currentDoctor.hospital}
         />
-        <Link href="/Slot"> {/* Use Link to navigate to the "Slot" page */}
+        <Link href="/Booking"> {/* Use Link to navigate to the "Slot" page */}
             <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mb-4">
                 Book Appointment
             </button>

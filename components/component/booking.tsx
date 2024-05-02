@@ -23,6 +23,8 @@ const AppointmentBooking: React.FC = () => {
     setSelectedTime(time);
   };
 
+
+    
   const handleSubmit = async () => {
     try {
       const appointmentData = {
@@ -33,6 +35,7 @@ const AppointmentBooking: React.FC = () => {
       const appointmentRef = collection(db, 'appointments');
       await addDoc(appointmentRef, appointmentData);
       console.log('Appointment booked successfully!');
+      alert('Your booking is confirmed!');
     } catch (error) {
       console.error('Error booking appointment:', error);
     }
