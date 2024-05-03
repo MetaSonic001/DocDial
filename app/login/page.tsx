@@ -39,7 +39,7 @@ const SignUp = () => {
         displayName: user.displayName,
       });
       console.log("User registered with Google and email saved to Firestore");
-      router.push("/More");
+      router.push("/Home");
     } catch (error) {
       console.error("Error signing up with Google:", error);
     }
