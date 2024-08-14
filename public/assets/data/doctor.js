@@ -1,7 +1,7 @@
 import { StaticImageData } from "next/image";
-import doctorImg01 from "../images/doctor-img01.png";
-import doctorImg02 from "../images/doctor-img02.png";
-import doctorImg03 from "../images/doctor-img03.png";
+import doctorImg01 from "../images/dr_robin_pinto.jpg";
+import doctorImg02 from "../images/dr_anand_rao.jpg";
+import doctorImg03 from "../images/dr_ankeet_dedhia.jpg";
 
 export const doctors = [
   {
@@ -10,7 +10,7 @@ export const doctors = [
     specialization: "Surgeon",
     avgRating: 4.8,
     totalRating: 272,
-    photo: doctorImg02,
+    photo: doctorImg01,
     totalPatients: 1500,
     hospital: "Mount Adora Hospital, Sylhet.",
     appointmentTimings: [

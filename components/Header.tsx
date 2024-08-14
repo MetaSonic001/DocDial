@@ -1,138 +1,130 @@
 import Image from "next/image";
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import Link from "next/link";
 
 const Header = () => {
-  const [isSearchOpen, setSearchOpen] = useState(false);
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false);
 
-  const handleSearchToggle = () => {
-    setSearchOpen(!isSearchOpen);
-  };
+  useEffect(() => {
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 20);
+    };
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
+  const navItems = [
+    { name: "Home", href: "/" },
+    { name: "Find a Doctor", href: "/Doctors" },
+    { name: "Services", href: "/Services" },
+    { name: "Contact", href: "/Contact" },
+    { name: "Chatbot", href: "/chatbot" },
+    { name: "Blog", href: "/Blog" },
+  ];
 
   return (
-    <nav className="bg-white border-gray-200 dark:bg-gray-900 dark:border-gray-700">
-      <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
-        <a href="/Home" className="flex items-center">
-          <Image
-            src="/favicon.ico"
-            alt="DocDial Logo"
-            width={40}
-            height={40}
-            className="h-8 mr-3"
-          />
-          <span className="self-center text-2xl text-black font-semibold whitespace-nowrap dark:text-black">
-            DocDial
-          </span>
-        </a>
-        <button
-          onClick={handleSearchToggle}
-          className="md:hidden block p-2 w-10 h-10 flex items-center justify-center rounded-lg hover-bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark-hover-bg-gray-700 dark-focus-ring-gray-600"
-        >
-          <span className="sr-only">Open main menu</span>
-          <svg
-            className="w-6 h-6"
-            fill="none"
-            stroke="currentColor"
-            viewBox="0 0 24 24"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth="2"
-              d="M4 6h16M4 12h16m-7 6h7"
+    <nav className={`fixed w-full z-50 transition-all duration-300 ${isScrolled ? "bg-white shadow-md" : "bg-transparent"}`}>
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="flex justify-between items-center h-16">
+          <Link href="/" className="flex-shrink-0 flex items-center">
+            <Image
+              src="/favicon.ico"
+              alt="DocDial Logo"
+              width={40}
+              height={40}
+              className="h-8 w-auto"
             />
-          </svg>
-        </button>
+            <span className="ml-2 text-2xl font-bold text-blue-700">DocDial</span>
+          </Link>
 
-        <div
-          className="hidden w-full md:flex md:w-auto"
-          id="navbar-multi-level"
-        >
-          <ul className="flex flex-col font-medium p-4 md:p-0 mt-4 border border-gray-100 rounded-lg bg-gray-50 md:flex-row md:space-x-8 md:mt-0 md:border-0 md:bg-white dark-bg-gray-800 md-dark-bg-gray-900 dark-border-gray-700">
-            <li>
-              <a
-                href="/#"
-                className="block py-2 pl-3 pr-4 text-black rounded hover-bg-blue-700 md-bg-transparent md-text-blue-700 md-p-0 md-dark-text-blue-500 dark-bg-blue-600 md-dark-bg-transparent"
-                aria-current="page"
-              >
-                Home
-              </a>
-            </li>
-            <li>
-              <a
-                href="/Doctors"
-                className="block py-2 pl-3 pr-4 text-gray-900 rounded hover-bg-blue-700 md-bg-transparent md-text-blue-700 md-p-0 md-dark-text-blue-500 dark-bg-blue-600 md-dark-bg-transparent"
-              >
-                Find a Doctor
-              </a>
-            </li>
-            <li>
-              <a
-                href="/Services"
-                className="block py-2 pl-3 pr-4 text-gray-900 rounded hover-bg-blue-700 md-bg-transparent md-text-blue-700 md-p-0 md-dark-text-blue-500 dark-bg-blue-600 md-dark-bg-transparent"
-              >
-                Services
-              </a>
-            </li>
-            <li>
-              <a
-                href="/Contact"
-                className="block py-2 pl-3 pr-4 text-gray-900 rounded hover-bg-blue-700 md-bg-transparent md-text-blue-700 md-p-0 md-dark-text-blue-500 dark-bg-blue-600 md-dark-bg-transparent"
-              >
-                Contact
-              </a>
-            </li>
-            <li>
-              <a
-                href="/chatbot"
-                className="block py-2 pl-3 pr-4 text-gray-900 rounded hover-bg-blue-700 md-bg-transparent md-text-blue-700 md-p-0 md-dark-text-blue-500 dark-bg-blue-600 md-dark-bg-transparent"
-              >
-                Chatbot
-              </a>
-            </li>
-            <li>
-              <a
-                href="/Blog"
-                className="block py-2 pl-3 pr-4 text-gray-900 rounded hover-bg-blue-700 md-bg-transparent md-text-blue-700 md-p-0 md-dark-text-blue-500 dark-bg-blue-600 md-dark-bg-transparent"
-              >
-                Blog
-              </a>
-            </li>
-          </ul>
-        </div>
-        <div className="relative md:mr-0 hidden md:block">
-          <input
-            type="text"
-            id="search"
-            className={`bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pl-10 p-2 ${
-              isSearchOpen ? "block" : "hidden"
-            }`}
-            placeholder="Search..."
-          />
-        </div>
-        <div
-          className={`${
-            isSearchOpen ? "block" : "hidden"
-          } md:flex items-center ml-3 space-x-3`}
-        >
-          <button
-            className="text-gray-900 bg-gray-200 px-3 py-2 rounded-lg hover-bg-gray-300"
-            onClick={handleSearchToggle}
-          >
-            Search
-          </button>
-          <button className="text-blue-700 border border-blue-700 px-3 py-2 rounded-lg hover-bg-blue-700 hover-text-white">
-            <a href="/login">
-            Log In
-            </a>
-          </button>
-          <button className="text-white bg-blue-700 px-3 py-2 rounded-lg hover-bg-blue-800">
-            <a href="/signup">
-            Sign Up
-            </a>
-          </button>
+          <div className="hidden md:block">
+            <div className="ml-10 flex items-baseline space-x-4">
+              {navItems.map((item) => (
+                <Link
+                  key={item.name}
+                  href={item.href}
+                  className="px-3 py-2 rounded-md text-sm font-medium text-gray-700 hover:bg-blue-100 hover:text-blue-700 transition-all duration-300"
+                >
+                  {item.name}
+                </Link>
+              ))}
+            </div>
+          </div>
+
+          <div className="hidden md:block">
+            <div className="ml-4 flex items-center md:ml-6">
+              <div className="relative">
+                <input
+                  type="text"
+                  placeholder="Search..."
+                  className="bg-gray-100 text-gray-700 rounded-full py-2 px-4 pl-10 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:bg-white transition-all duration-300"
+                />
+                <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 text-gray-500 absolute left-3 top-2.5" viewBox="0 0 20 20" fill="currentColor">
+                  <path fillRule="evenodd" d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z" clipRule="evenodd" />
+                </svg>
+              </div>
+              <Link href="/login" className="ml-4 px-4 py-2 rounded-md text-sm font-medium text-blue-700 bg-blue-100 hover:bg-blue-200 transition-all duration-300">
+                Log In
+              </Link>
+              <Link href="/signup" className="ml-2 px-4 py-2 rounded-md text-sm font-medium text-white bg-blue-700 hover:bg-blue-800 transition-all duration-300">
+                Sign Up
+              </Link>
+            </div>
+          </div>
+
+          <div className="-mr-2 flex md:hidden">
+            <button
+              onClick={() => setIsMenuOpen(!isMenuOpen)}
+              className="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-white hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-white"
+            >
+              <span className="sr-only">Open main menu</span>
+              {isMenuOpen ? (
+                <svg className="block h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12" />
+                </svg>
+              ) : (
+                <svg className="block h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h16M4 18h16" />
+                </svg>
+              )}
+            </button>
+          </div>
         </div>
       </div>
+
+      {isMenuOpen && (
+        <div className="md:hidden">
+          <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+            {navItems.map((item) => (
+              <Link
+                key={item.name}
+                href={item.href}
+                className="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:bg-blue-100 hover:text-blue-700 transition-all duration-300"
+              >
+                {item.name}
+              </Link>
+            ))}
+          </div>
+          <div className="pt-4 pb-3 border-t border-gray-200">
+            <div className="flex items-center px-5">
+              <input
+                type="text"
+                placeholder="Search..."
+                className="w-full bg-gray-100 text-gray-700 rounded-full py-2 px-4 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:bg-white transition-all duration-300"
+              />
+            </div>
+            <div className="mt-3 px-2 space-y-1">
+              <Link href="/login" className="block px-3 py-2 rounded-md text-base font-medium text-blue-700 bg-blue-100 hover:bg-blue-200 transition-all duration-300">
+                Log In
+              </Link>
+              <Link href="/signup" className="block px-3 py-2 rounded-md text-base font-medium text-white bg-blue-700 hover:bg-blue-800 transition-all duration-300">
+                Sign Up
+              </Link>
+            </div>
+          </div>
+        </div>
+      )}
     </nav>
   );
 };

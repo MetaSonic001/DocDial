@@ -1,9 +1,7 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useRef } from 'react';
 import { askAi } from './GoogleAI';
-import { useRef } from 'react';
-
 
 interface Message {
   user: boolean;
@@ -15,20 +13,19 @@ const MedicalChatbot: React.FC = () => {
   const [isLoading, setIsLoading] = useState(false);
   const formRef = useRef<HTMLFormElement>(null);
 
-
   const handleSendMessage = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     const formData = new FormData(e.currentTarget);
     const message = formData.get('message')?.toString() || '';
-    
-    if (formRef.current) {
-        formRef.current.reset();
-      }
 
-      if (message.trim()) {
-        const newMessage: Message = { user: true, text: message };
-        setMessages([...messages, newMessage]); // Add user's message to chat history
-        setIsLoading(true);
+    if (formRef.current) {
+      formRef.current.reset();
+    }
+
+    if (message.trim()) {
+      const newMessage: Message = { user: true, text: message };
+      setMessages([...messages, newMessage]); // Add user's message to chat history
+      setIsLoading(true);
 
       try {
         const response = await askAi(message);
@@ -38,27 +35,8 @@ const MedicalChatbot: React.FC = () => {
         handleAiResponse("I'm sorry, there was an error processing your request. Please try again later.");
       } finally {
         setIsLoading(false);
-      } 
+      }
     }
-
-    <form ref={formRef} onSubmit={handleSendMessage} className="mt-4">
-      <div className="flex">
-        <textarea
-          id="message"
-          name="message"
-          rows={3}
-          placeholder="Type your medical query here..."
-          className="flex-1 p-2 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500"
-        />
-        <button
-          type="submit"
-          className="ml-2 px-4 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500"
-        >
-          Send
-        </button>
-      </div>
-    </form>
-
   };
 
   const handleAiResponse = (response: string) => {
@@ -74,17 +52,16 @@ const MedicalChatbot: React.FC = () => {
   };
 
   return (
-    <div className="flex flex-col h-full min-h-screen bg-gray-100">
+    <div className="flex flex-col h-full min-h-screen">
       <div className="flex-1 p-4">
         <div className="bg-white rounded-lg shadow-lg p-4">
-          {/* <h1 className="text-2xl font-bold mb-4">Medical Chatbot</h1> */}
           <div className="flex flex-col h-96 overflow-y-auto">
             {messages.map((message, index) => (
               <div
                 key={index}
-                className={`py-2 px-4 rounded-lg mb-2 ${
-                  message.user ? 'bg-green-200 text-gray-800' : 'bg-blue-200 text-gray-800'
-                }`}
+                className={`py-2 px-4 rounded-lg mb-2 max-w-lg ${message.user ? 'bg-green-500 text-white self-end' : 'bg-blue-500 text-white self-start'
+                  }`}
+                style={{ animation: 'fadeIn 0.5s ease-in-out' }}
               >
                 {message.user ? (
                   <div className="font-bold">You:</div>
@@ -95,20 +72,20 @@ const MedicalChatbot: React.FC = () => {
               </div>
             ))}
             {isLoading && (
-              <div className="py-2 px-4 rounded-lg mb-2 bg-blue-200 text-gray-800">
+              <div className="py-2 px-4 rounded-lg mb-2 bg-blue-500 text-white self-start">
                 <div className="font-bold">AI Assistant:</div>
                 <div>Loading...</div>
               </div>
             )}
           </div>
-          <form onSubmit={handleSendMessage} className="mt-4">
+          <form ref={formRef} onSubmit={handleSendMessage} className="mt-4 fixed bottom-0 left-0 right-0 bg-white p-4 shadow-lg">
             <div className="flex">
               <textarea
                 id="message"
                 name="message"
-                rows={3}
+                rows={1}
                 placeholder="Type your medical query here..."
-                className="flex-1 p-2 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                className="flex-1 p-2 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500 resize-none"
               />
               <button
                 type="submit"

@@ -13,7 +13,6 @@ interface DoctorsListProps {
 const DoctorsList: React.FC<DoctorsListProps> = ({ doctors }) => {
   return (
     <div className="mb-8">
-      <h2 className="text-2xl font-bold mb-4">Other Doctors</h2>
       <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
         {doctors.map((doctor) => (
           <div key={doctor.id} className="flex flex-col items-center">

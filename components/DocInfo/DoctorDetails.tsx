@@ -25,7 +25,7 @@ const DoctorDetails: React.FC<DoctorDetailsProps> = ({
       <div className="w-full md:w-1/3 mb-4 md:mb-0">
         {/* Since StaticImageData cannot be used directly as src for an <img> tag,
         you need to convert it to a URL first. */}
-        <img src={photo.src} alt={name} className="rounded-lg shadow-lg" />
+        <img src="/assets/images/dr_anand_rao.jpg" alt={name} className="rounded-lg shadow-lg" />
       </div>
       <div className="w-full md:w-2/3 md:ml-8">
         <h1 className="text-3xl font-bold mb-2">{name}</h1>

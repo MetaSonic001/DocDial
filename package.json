@@ -33,6 +33,7 @@
     "firebase": "^10.11.0",
     "firebase-admin": "^11.11.0",
     "flowbite": "^2.0.0",
+    "framer-motion": "^11.3.24",
     "jwt-decode": "^4.0.0",
     "lucide-react": "^0.376.0",
     "moment": "^2.30.1",

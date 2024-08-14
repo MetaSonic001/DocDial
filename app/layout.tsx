@@ -14,12 +14,12 @@ export default function RootLayout({
 }) {
   return (
     <html lang="eng">
-    <body className={`dark:bg-black`}>
-    <Header />
-    {children}
-    <Footer />
-    </body>
+      <body className={`dark:bg-black`}>
+        <Header />
+        {children}
+        <Footer />
+      </body>
     </html>
-    );
-  }
-  
+  );
+}
+

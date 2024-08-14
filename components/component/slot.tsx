@@ -2,78 +2,90 @@
 import { AvatarImage, AvatarFallback, Avatar } from "@/components/ui/avatar"
 import { CardHeader, CardContent, CardFooter, Card } from "@/components/ui/card"
 import Link from "next/link"
-import { Calendar } from "@/components/ui/calendar"
 import { Button } from "@/components/ui/button"
-import { Separator } from "@/components/ui/separator"
 import { JSX, SVGProps } from "react"
-import BookSlot from "./BookSlot"
 import Booking from "./booking"
 
-export default function slot() {
+export default function Slot() {
   return (
-    <>
+    <div className="bg-gradient-to-b from-blue-50 to-white min-h-screen">
+
       <div className="max-w-6xl mx-auto px-4 md:px-6 py-12 md:py-16">
-        <div className="grid md:grid-cols-2 gap-8 md:gap-12">
+        <div className="mb-16"></div>
+        <div className="grid md:grid-cols-2 gap-8 md:gap-12 items-center">
           <div>
-            <h1 className="text-3xl md:text-4xl font-bold tracking-tight">Book an Appointment with <br/> Dr. Jefin John</h1>
-            <p className="mt-4 text-gray-500 dark:text-gray-400">
-              Dr. Jefin John is a highly experienced family medicine physician with a focus on preventive care and
-              patient education.
+            <h1 className="text-4xl md:text-5xl font-bold tracking-tight text-gray-900 mb-4">
+              Book an Appointment with <span className="text-blue-600">Dr. Jefin John</span>
+            </h1>
+            <p className="text-xl text-gray-600 mb-8">
+              Expert in Family Medicine with a focus on preventive care and patient education.
             </p>
-            <div className="mt-6 grid grid-cols-1 sm:grid-cols-2 gap-4">
-              <Card>
-                <CardHeader>
-                  <div className="flex items-center gap-4">
-                    <Avatar>
-                      <AvatarImage alt="Dr. Smith" src="/placeholder-avatar.jpg" />
-                      <AvatarFallback>DS</AvatarFallback>
-                    </Avatar>
-                    <div>
-                      <h3 className="font-semibold">Dr. Jefin John</h3>
-                      <p className="text-sm text-gray-500 dark:text-gray-400">Family Medicine</p>
-                    </div>
+            <Card className="bg-white shadow-lg hover:shadow-xl transition-shadow duration-300">
+              <CardHeader>
+                <div className="flex items-center gap-4">
+                  <Avatar className="h-16 w-16">
+                    <AvatarImage alt="Dr. Jefin John" src="/assets/images.dr_anand_rao.jpg" />
+                    <AvatarFallback>JJ</AvatarFallback>
+                  </Avatar>
+                  <div>
+                    <h3 className="text-2xl font-semibold text-gray-900">Dr. Jefin John</h3>
+                    <p className="text-lg text-blue-600">Family Medicine</p>
                   </div>
-                </CardHeader>
-                <CardContent>
-                  <p className="text-sm text-gray-500 dark:text-gray-400">
-                    Dr. Smith is a highly experienced family medicine physician with a focus on preventive care and
-                    patient education.
-                  </p>
-                </CardContent>
-                <CardFooter>
-                  <Link
-                    className="inline-flex items-center justify-center rounded-md bg-gray-900 px-4 py-2 text-sm font-medium text-white shadow-sm transition-colors hover:bg-gray-900/90 focus:outline-none focus:ring-2 focus:ring-gray-950 focus:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 dark:bg-gray-50 dark:text-gray-900 dark:hover:bg-gray-50/90 dark:focus:ring-gray-300"
-                    href="#AppointmentBooking"
-                  >
+                </div>
+              </CardHeader>
+              <CardContent>
+                <p className="text-gray-600">
+                  With over 10 years of experience, Dr. John is dedicated to providing comprehensive care for patients of all ages.
+                </p>
+                <div className="mt-4 space-y-2">
+                  <div className="flex items-center">
+                    <LocateIcon className="h-5 w-5 text-blue-500 mr-2" />
+                    <span>123 Medical Center, City, State</span>
+                  </div>
+                  <div className="flex items-center">
+                    <PhoneIcon className="h-5 w-5 text-blue-500 mr-2" />
+                    <span>(123) 456-7890</span>
+                  </div>
+                </div>
+              </CardContent>
+              <CardFooter>
+                <Link href="#AppointmentBooking">
+                  <Button className="w-full bg-blue-600 hover:bg-blue-700 text-white">
                     Book Appointment
-                  </Link>
-                </CardFooter>
-              </Card>
-            </div>
+                  </Button>
+                </Link>
+              </CardFooter>
+            </Card>
           </div>
-          <div>
+          <div className="relative">
             <img
-              alt="Dr. Sarah Smith"
-              className="rounded-lg object-cover"
-              height={400}
-              src="/placeholder.svg"
+              alt="Dr. Jefin John"
+              className="rounded-lg object-cover shadow-2xl"
+              height={500}
+              src="./assets/images/dr_anand_rao.jpg"
               style={{
-                aspectRatio: "600/400",
+                aspectRatio: "4/5",
                 objectFit: "cover",
               }}
-              width={600}
+              width={400}
             />
-            
+            <div className="absolute -bottom-6 -left-6 bg-white p-4 rounded-lg shadow-lg">
+              <div className="flex items-center gap-2">
+                <CalendarIcon className="h-6 w-6 text-blue-500" />
+                <span className="text-lg font-semibold">Available Today</span>
+              </div>
+            </div>
           </div>
         </div>
-        <Booking/>
+        <div id="AppointmentBooking" className="mt-16">
+          <Booking />
+        </div>
       </div>
-      {/* <BookSlot/> */}
-             
-
-    </>
+    </div>
   )
 }
+
+// ... (keep the icon components as they are)
 
 function CalendarIcon(props: JSX.IntrinsicAttributes & SVGProps<SVGSVGElement>) {
   return (
