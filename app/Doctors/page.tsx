@@ -1,7 +1,7 @@
 "use client"
-import React, { useState } from "react";
 import DoctorCard from "@/components/Doctors/DoctorCard";
 import { doctors } from "@/public/assets/data/doctor";
+import React, { useState } from "react";
 import 'swiper/css';
 import 'swiper/css/pagination';
 
@@ -15,7 +15,7 @@ const Doctors: React.FC = () => {
     const filtered = doctors.filter(
       (doctor) =>
         doctor.name.toLowerCase().includes(term) ||
-        doctor.specialty.toLowerCase().includes(term)
+        doctor.specialization.toLowerCase().includes(term)
     );
     setFilteredDoctors(filtered);
   };
