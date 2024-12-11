@@ -1,184 +1,193 @@
-import Image from "next/image";
-import { useState, useEffect } from "react";
+"use client";
+
+import { useState } from "react";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
+import { Menu, X, ChevronDown, User } from "lucide-react";
 
-const Header = () => {
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [isScrolled, setIsScrolled] = useState(false);
+import { Button } from "@/components/ui/button";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
 
-  useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 20);
-    };
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
+const NavLink = ({
+  href,
+  children,
+}: {
+  href: string;
+  children: React.ReactNode;
+}) => {
+  const pathname = usePathname();
+  const isActive = pathname === href;
+
+  return (
+    <Link
+      href={href}
+      className={`text-sm font-medium transition-colors hover:text-primary ${
+        isActive ? "text-primary" : "text-muted-foreground"
+      }`}
+    >
+      {children}
+    </Link>
+  );
+};
+
+const Logo = () => (
+  <Link href="/" className="flex items-center space-x-2">
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      className="h-6 w-6 text-primary"
+    >
+      <path d="M22 12h-4l-3 9L9 3l-3 9H2" />
+    </svg>
+    <span className="font-bold text-xl text-primary">HealthHub</span>
+  </Link>
+);
+
+export function Navbar() {
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   const navItems = [
     { name: "Home", href: "/" },
-    { name: "Find a Doctor", href: "/Doctors" },
-    { name: "Services", href: "/Services" },
+    { name: "Hospitals", href: "/hospitals" },
+    { name: "Specialists", href: "/specialists" },
     { name: "Contact", href: "/Contact" },
     { name: "Chatbot", href: "/chatbot" },
     { name: "Blog", href: "/Blog" },
-    { name: "Doctor's Dashbaord", href: "https://doc-dial-2.vercel.app" },
+    { name: "About", href: "/about" },
   ];
 
   return (
-    <nav
-      className={`fixed w-full z-50 transition-all duration-300 ${
-        isScrolled ? "bg-white shadow-md" : "bg-transparent"
-      }`}
-    >
+    <nav className="bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 sticky top-0 z-50 w-full border-b border-border/40">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-between items-center h-16">
-          <Link href="/" className="flex-shrink-0 flex items-center">
-            <Image
-              src="/favicon.ico"
-              alt="DocDial Logo"
-              width={40}
-              height={40}
-              className="h-8 w-auto"
-            />
-            <span className="ml-2 text-2xl font-bold text-blue-700">
-              DocDial
-            </span>
-          </Link>
-
-          <div className="hidden md:block">
-            <div className="ml-10 flex items-baseline space-x-4">
+        <div className="flex justify-between h-16">
+          <div className="flex items-center">
+            <Logo />
+            <div className="hidden md:ml-6 md:flex md:space-x-8">
               {navItems.map((item) => (
-                <Link
-                  key={item.name}
-                  href={item.href}
-                  className="px-3 py-2 rounded-md text-sm font-medium text-gray-700 hover:bg-blue-100 hover:text-blue-700 transition-all duration-300"
-                >
+                <NavLink key={item.name} href={item.href}>
                   {item.name}
-                </Link>
+                </NavLink>
               ))}
             </div>
           </div>
-
-          <div className="hidden md:block">
-            <div className="ml-4 flex items-center md:ml-6">
-              <div className="relative">
-                <input
-                  type="text"
-                  placeholder="Search..."
-                  className="bg-gray-100 text-gray-700 rounded-full py-2 px-4 pl-10 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:bg-white transition-all duration-300"
-                />
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  className="h-5 w-5 text-gray-500 absolute left-3 top-2.5"
-                  viewBox="0 0 20 20"
-                  fill="currentColor"
-                >
-                  <path
-                    fillRule="evenodd"
-                    d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z"
-                    clipRule="evenodd"
-                  />
-                </svg>
-              </div>
-              <Link
-                href="/login"
-                className="ml-4 px-4 py-2 rounded-md text-sm font-medium text-blue-700 bg-blue-100 hover:bg-blue-200 transition-all duration-300"
-              >
-                Log In
-              </Link>
-              <Link
-                href="/signup"
-                className="ml-2 px-4 py-2 rounded-md text-sm font-medium text-white bg-blue-700 hover:bg-blue-800 transition-all duration-300"
-              >
-                Sign Up
-              </Link>
+          <div className="flex items-center">
+            <div className="flex-shrink-0 hidden md:flex items-center space-x-4">
+              <Button variant="ghost" asChild>
+                <Link href="/login">Log in</Link>
+              </Button>
+              <Button asChild>
+                <Link href="/signup">Sign up</Link>
+              </Button>
+              <DropdownMenu>
+                <DropdownMenuTrigger asChild>
+                  <Button variant="outline" className="ml-4">
+                    My Profile <ChevronDown className="ml-2 h-4 w-4" />
+                  </Button>
+                </DropdownMenuTrigger>
+                <DropdownMenuContent align="end">
+                  <DropdownMenuItem>
+                    <Link href="/bookings" className="flex items-center">
+                      My Bookings
+                    </Link>
+                  </DropdownMenuItem>
+                  <DropdownMenuItem>
+                    <Link href="/settings" className="flex items-center">
+                      Settings
+                    </Link>
+                  </DropdownMenuItem>
+                  <DropdownMenuItem>
+                    <Link href="/account" className="flex items-center">
+                      Account Details
+                    </Link>
+                  </DropdownMenuItem>
+                </DropdownMenuContent>
+              </DropdownMenu>
             </div>
-          </div>
-
-          <div className="-mr-2 flex md:hidden">
-            <button
-              onClick={() => setIsMenuOpen(!isMenuOpen)}
-              className="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-white hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-white"
-            >
-              <span className="sr-only">Open main menu</span>
-              {isMenuOpen ? (
-                <svg
-                  className="block h-6 w-6"
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                  aria-hidden="true"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth="2"
-                    d="M6 18L18 6M6 6l12 12"
-                  />
-                </svg>
-              ) : (
-                <svg
-                  className="block h-6 w-6"
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                  aria-hidden="true"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth="2"
-                    d="M4 6h16M4 12h16M4 18h16"
-                  />
-                </svg>
-              )}
-            </button>
+            <div className="flex items-center md:hidden">
+              <Button
+                variant="ghost"
+                className="inline-flex items-center justify-center p-2 rounded-md text-primary hover:text-primary hover:bg-primary/10 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-primary"
+                onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+              >
+                <span className="sr-only">Open main menu</span>
+                {mobileMenuOpen ? (
+                  <X className="block h-6 w-6" aria-hidden="true" />
+                ) : (
+                  <Menu className="block h-6 w-6" aria-hidden="true" />
+                )}
+              </Button>
+            </div>
           </div>
         </div>
       </div>
 
-      {isMenuOpen && (
-        <div className="md:hidden">
-          <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3">
-            {navItems.map((item) => (
-              <Link
-                key={item.name}
-                href={item.href}
-                className="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:bg-blue-100 hover:text-blue-700 transition-all duration-300"
-              >
-                {item.name}
-              </Link>
-            ))}
+      {/* Mobile menu */}
+      <div className={`md:hidden ${mobileMenuOpen ? "block" : "hidden"}`}>
+        <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+          {navItems.map((item) => (
+            <NavLink key={item.name} href={item.href}>
+              {item.name}
+            </NavLink>
+          ))}
+        </div>
+        <div className="pt-4 pb-3 border-t border-border/40">
+          <div className="flex items-center px-5">
+            <div className="flex-shrink-0">
+              <User className="h-8 w-8 rounded-full" />
+            </div>
+            <div className="ml-3">
+              <div className="text-base font-medium text-primary">
+                User Name
+              </div>
+              <div className="text-sm font-medium text-muted-foreground">
+                user@example.com
+              </div>
+            </div>
           </div>
-          <div className="pt-4 pb-3 border-t border-gray-200">
-            <div className="flex items-center px-5">
-              <input
-                type="text"
-                placeholder="Search..."
-                className="w-full bg-gray-100 text-gray-700 rounded-full py-2 px-4 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:bg-white transition-all duration-300"
-              />
-            </div>
-            <div className="mt-3 px-2 space-y-1">
-              <Link
-                href="/login"
-                className="block px-3 py-2 rounded-md text-base font-medium text-blue-700 bg-blue-100 hover:bg-blue-200 transition-all duration-300"
-              >
-                Log In
-              </Link>
-              <Link
-                href="/signup"
-                className="block px-3 py-2 rounded-md text-base font-medium text-white bg-blue-700 hover:bg-blue-800 transition-all duration-300"
-              >
-                Sign Up
-              </Link>
-            </div>
+          <div className="mt-3 px-2 space-y-1">
+            <Link
+              href="/bookings"
+              className="block px-3 py-2 rounded-md text-base font-medium text-muted-foreground hover:text-primary hover:bg-primary/10"
+            >
+              My Bookings
+            </Link>
+            <Link
+              href="/settings"
+              className="block px-3 py-2 rounded-md text-base font-medium text-muted-foreground hover:text-primary hover:bg-primary/10"
+            >
+              Settings
+            </Link>
+            <Link
+              href="/account"
+              className="block px-3 py-2 rounded-md text-base font-medium text-muted-foreground hover:text-primary hover:bg-primary/10"
+            >
+              Account Details
+            </Link>
+            <Link
+              href="/login"
+              className="block px-3 py-2 rounded-md text-base font-medium text-muted-foreground hover:text-primary hover:bg-primary/10"
+            >
+              Log in
+            </Link>
+            <Link
+              href="/signup"
+              className="block px-3 py-2 rounded-md text-base font-medium text-muted-foreground hover:text-primary hover:bg-primary/10"
+            >
+              Sign up
+            </Link>
           </div>
         </div>
-      )}
+      </div>
     </nav>
   );
-};
-
-export default Header;
+}
