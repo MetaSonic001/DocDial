@@ -1,10 +1,5 @@
 "use client";
 
-import { useState } from "react";
-import Link from "next/link";
-import { usePathname } from "next/navigation";
-import { Menu, X, ChevronDown, User } from "lucide-react";
-import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import {
   DropdownMenu,
@@ -12,6 +7,11 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
+import { ChevronDown, Menu, User, X } from "lucide-react";
+import Image from "next/image";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
+import { useState } from "react";
 
 const NavLink = ({
   href,
@@ -54,12 +54,12 @@ export function Navbar() {
 
   const navItems = [
     { name: "Home", href: "/" },
-    { name: "Hospitals", href: "/hospitals" },
-    { name: "Specialists", href: "/specialists" },
+    { name: "Hospitals", href: "/search" },
+    { name: "Specialists", href: "/search" },
     { name: "Contact", href: "/Contact" },
     { name: "Chatbot", href: "/chatbot" },
-    { name: "Blog", href: "/Blog" },
-    { name: "About", href: "/about" },
+    { name: "Services", href: "/Services" },
+    { name: "Appointments", href: "/appointments/book" },
   ];
 
   return (
